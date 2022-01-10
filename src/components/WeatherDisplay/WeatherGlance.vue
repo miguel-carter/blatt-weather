@@ -1,8 +1,10 @@
 <template>
   <div class="wrapper" style="text-align: center">
     <p class="city">{{ data.name }}</p>
-    <p class="temp">{{ temp }}</p>
-    <p class="description">{{ data.weather[0].description }}</p>
+    <p class="temp">{{ temp }}&deg;{{ conversionType.toUpperCase() }}</p>
+    <p class="description">
+      {{ data.weather[0].description }}
+    </p>
   </div>
 </template>
 
@@ -16,10 +18,14 @@ export default {
       type: Object,
       required: true,
     },
+    conversionType: {
+      type: String,
+      require: true,
+    },
   },
   computed: {
     temp() {
-      return conversion("f", this.data.main.temp);
+      return conversion(this.conversionType, this.data.main.temp);
     },
   },
 };
@@ -36,7 +42,7 @@ export default {
 }
 .temp {
   font-size: 4rem;
-  margin: 0.5rem 0;
+  margin: 1rem 0;
 }
 .description {
   font-size: 1rem;

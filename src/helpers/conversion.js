@@ -1,6 +1,6 @@
 export default (conversion, kelvin) => {
   if (conversion == "c") {
-    return kelvin - 273;
+    return Math.floor(kelvin - 273);
   }
 
   if (conversion == "f") {

@@ -1,10 +1,20 @@
 <template>
   <div class="wrapper" style="text-align: left">
-    <p class="description">Feels like {{ feels_like }}</p>
-    <p class="detail">high {{ max }} low {{ low }}</p>
-    <p class="detail">humidity {{ data.main.humidity }}%</p>
-    <p class="detail">wind {{ data.wind.speed }} kph</p>
-    <p class="detail">pressure {{ data.main.pressure }} hPa</p>
+    <p class="description">
+      Feels like {{ feels_like }}&deg;{{ conversionType.toUpperCase() }}
+    </p>
+    <div>
+      <div style="display: inline-block">
+        <p class="detail"><i class="fas fa-tint"></i> humidity</p>
+        <p class="detail"><i class="fas fa-wind"></i> wind</p>
+        <p class="detail"><i class="fas fa-tachometer-alt"></i> pressure</p>
+      </div>
+      <div style="display: inline-block; margin: 0 0 0 10px">
+        <p class="detail">{{ data.main.humidity }}%</p>
+        <p class="detail">{{ data.wind.speed }} kph</p>
+        <p class="detail">{{ data.main.pressure }} hPa</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -18,16 +28,20 @@ export default {
       type: Object,
       required: true,
     },
+    conversionType: {
+      type: String,
+      require: true,
+    },
   },
   computed: {
     feels_like() {
-      return conversion("f", this.data.main.feels_like);
+      return conversion(this.conversionType, this.data.main.feels_like);
     },
     max() {
-      return conversion("f", this.data.main.temp_max);
+      return conversion(this.conversionType, this.data.main.temp_max);
     },
     low() {
-      return conversion("f", this.data.main.temp_min);
+      return conversion(this.conversionType, this.data.main.temp_min);
     },
   },
 };
@@ -37,17 +51,17 @@ export default {
 .wrapper > * {
   padding: 0;
   margin: 0;
-  width: 50%;
+  width: 60%;
   margin: 0 auto;
 }
 
 .description {
-  font-size: 1.5rem;
+  font-size: 1rem;
   margin-bottom: 1rem;
 }
 
 .detail {
   font-size: 1rem;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 </style>

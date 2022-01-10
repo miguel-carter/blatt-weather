@@ -1,12 +1,14 @@
 <template>
   <div class="main" v-if="data">
-    <h2>Vue Weather</h2>
+    <h2>Blatt Weather</h2>
     <SearchBar class="component" @search="searchHandler($event)" />
     <WeatherDisplay class="component" :weather="data" />
     <WeatherForecast class="component" />
     <p style="text-align: center; font-size: 13px">
-      Developed By
+      Developed In Vue By
       <a href="https://www.linkedin.com/in/miguelcarter/">Miguel Carter</a>
+      Inspired By
+      <a href="https://github.com/esnz/react-weather-app">React Weather</a>
     </p>
   </div>
 </template>
