@@ -1,6 +1,6 @@
 <template>
   <Card>
-    <div class="row" style="padding: 10px">
+    <div class="row" style="padding: 20px">
       <div class="column" style="padding: 10px">
         <WeatherGlance :data="weather" />
       </div>

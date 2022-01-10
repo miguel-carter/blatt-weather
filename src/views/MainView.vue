@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="main" v-if="data">
     <h2>Vue Weather</h2>
     <SearchBar class="component" @search="searchHandler($event)" />
     <WeatherDisplay class="component" :weather="data" />
@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import SearchBar from "../components/SearchBar/SearchBar.vue";
 import WeatherDisplay from "../components/WeatherDisplay/WeatherDisplay.vue";
 import WeatherForecast from "../components/WeatherForecast/WeatherForecast.vue";
@@ -22,24 +23,27 @@ export default {
     WeatherDisplay,
     WeatherForecast,
   },
+  mounted() {
+    this.searchHandler("New York");
+  },
   data() {
     return {
-      data: {
-        city: "Searcy",
-        temp: 32,
-        description: "overcast clouds",
-        feelsLike: 13,
-        high: 10,
-        low: 4,
-        humidity: 53,
-        wind: 23,
-        pressure: 12,
-      },
+      data: null,
     };
   },
   methods: {
     searchHandler(query) {
-      console.log(query);
+      const baseURL = "https://api.openweathermap.org/data/2.5/weather?q=";
+      const OW_API_KEY = "";
+      axios
+        .get(`${baseURL}${query}&appid=${OW_API_KEY}`)
+        .then((res) => {
+          const { data } = res;
+          this.data = data;
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     },
   },
 };

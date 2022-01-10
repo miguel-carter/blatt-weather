@@ -1,18 +1,25 @@
 <template>
   <div class="wrapper" style="text-align: center">
-    <p class="city">{{ data.city }}</p>
-    <p class="temp">{{ data.temp }}</p>
-    <p class="description">{{ data.description }}</p>
+    <p class="city">{{ data.name }}</p>
+    <p class="temp">{{ temp }}</p>
+    <p class="description">{{ data.weather[0].description }}</p>
   </div>
 </template>
 
 <script>
+import conversion from "../../helpers/conversion";
+
 export default {
   name: "WeatherGlance",
   props: {
     data: {
       type: Object,
       required: true,
+    },
+  },
+  computed: {
+    temp() {
+      return conversion("f", this.data.main.temp);
     },
   },
 };
