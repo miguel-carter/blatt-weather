@@ -10,9 +10,9 @@
         <p class="detail"><i class="fas fa-tachometer-alt"></i> pressure</p>
       </div>
       <div style="display: inline-block; margin: 0 0 0 10px">
-        <p class="detail">{{ data.main.humidity }}%</p>
-        <p class="detail">{{ data.wind.speed }} kph</p>
-        <p class="detail">{{ data.main.pressure }} hPa</p>
+        <p class="detail">{{ data.current.humidity }}%</p>
+        <p class="detail">{{ data.current.wind_speed }} kph</p>
+        <p class="detail">{{ data.current.pressure }} hPa</p>
       </div>
     </div>
   </div>
@@ -35,13 +35,7 @@ export default {
   },
   computed: {
     feels_like() {
-      return conversion(this.conversionType, this.data.main.feels_like);
-    },
-    max() {
-      return conversion(this.conversionType, this.data.main.temp_max);
-    },
-    low() {
-      return conversion(this.conversionType, this.data.main.temp_min);
+      return conversion(this.conversionType, this.data.current.feels_like);
     },
   },
 };

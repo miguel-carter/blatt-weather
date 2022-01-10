@@ -16,13 +16,13 @@
       <div class="column">
         <WeatherGlance
           :conversionType="isToggled ? 'c' : 'f'"
-          :data="weather"
+          :data="current"
         />
       </div>
       <div class="column">
         <WeatherDetails
           :conversionType="isToggled ? 'c' : 'f'"
-          :data="weather"
+          :data="current"
         />
       </div>
     </div>
@@ -44,7 +44,7 @@ export default {
     WeatherDetails,
   },
   props: {
-    weather: {
+    current: {
       type: Object,
       required: true,
     },

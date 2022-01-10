@@ -1,9 +1,9 @@
 <template>
   <div class="wrapper" style="text-align: center">
-    <p class="city">{{ data.name }}</p>
+    <p class="city">Temp City</p>
     <p class="temp">{{ temp }}&deg;{{ conversionType.toUpperCase() }}</p>
     <p class="description">
-      {{ data.weather[0].description }}
+      {{ data.current.weather[0].description }}
     </p>
   </div>
 </template>
@@ -25,7 +25,7 @@ export default {
   },
   computed: {
     temp() {
-      return conversion(this.conversionType, this.data.main.temp);
+      return conversion(this.conversionType, this.data.current.temp);
     },
   },
 };

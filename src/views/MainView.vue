@@ -2,8 +2,8 @@
   <div class="main" v-if="data">
     <h2>Blatt Weather</h2>
     <SearchBar class="component" @search="searchHandler($event)" />
-    <WeatherDisplay class="component" :weather="data" />
-    <WeatherForecast class="component" />
+    <WeatherDisplay class="component" :current="data" />
+    <WeatherForecast class="component" :forecast="data" />
     <p style="text-align: center; font-size: 13px">
       Developed In Vue By
       <a href="https://www.linkedin.com/in/miguelcarter/">Miguel Carter</a>
@@ -34,18 +34,20 @@ export default {
     };
   },
   methods: {
-    searchHandler(query) {
+    async searchHandler(query) {
       const baseURL = "https://api.openweathermap.org/data/2.5/weather?q=";
-      const OW_API_KEY = "";
-      axios
-        .get(`${baseURL}${query}&appid=${OW_API_KEY}`)
-        .then((res) => {
-          const { data } = res;
-          this.data = data;
-        })
-        .catch((err) => {
-          console.error(err);
-        });
+      const OW_API_KEY = "018ae4396cd24e7003a1b9a92bad8508";
+      try {
+        const current = await axios.get(
+          `${baseURL}${query}&appid=${OW_API_KEY}`
+        );
+        const forecast = await axios.get(
+          `https://api.openweathermap.org/data/2.5/onecall?lat=${current.data.coord.lat}&lon=${current.data.coord.lon}&appid=${OW_API_KEY}`
+        );
+        this.data = forecast.data;
+      } catch (error) {
+        console.error(error);
+      }
     },
   },
 };

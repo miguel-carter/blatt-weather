@@ -22,6 +22,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
 }
+
 body,
 html {
   padding: 0;
@@ -31,7 +32,12 @@ html {
   border: none;
   overflow: hidden;
 }
+
 body {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  justify-content: center;
   background-size: center 120%;
   background-repeat: auto no-repeat;
   background-image: url("~@/assets/clouds.svg"),

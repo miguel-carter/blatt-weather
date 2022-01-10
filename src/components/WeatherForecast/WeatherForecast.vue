@@ -1,13 +1,9 @@
 <template>
   <Card>
-    <div class="row" style="padding: 10px">
-      <div class="column" style="padding: 10px"><WeatherForecastItem /></div>
-      <div class="column" style="padding: 10px"><WeatherForecastItem /></div>
-      <div class="column" style="padding: 10px"><WeatherForecastItem /></div>
-      <div class="column" style="padding: 10px"><WeatherForecastItem /></div>
-      <div class="column" style="padding: 10px"><WeatherForecastItem /></div>
-      <div class="column" style="padding: 10px"><WeatherForecastItem /></div>
-      <div class="column" style="padding: 10px"><WeatherForecastItem /></div>
+    <div class="row">
+      <div class="column" v-for="(item, index) in forecast.daily" :key="index">
+        <WeatherForecastItem :data="item" />
+      </div>
     </div>
   </Card>
 </template>
@@ -21,6 +17,12 @@ export default {
     Card,
     WeatherForecastItem,
   },
+  props: {
+    forecast: {
+      type: Object,
+      required: true,
+    },
+  },
 };
 </script>
 
@@ -31,6 +33,7 @@ export default {
   flex-wrap: wrap;
   width: 100%;
   margin: 0;
+  padding: 10px 0;
 }
 
 .column {
