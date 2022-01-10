@@ -13,6 +13,11 @@ Weather App built with Vue.
 - **Extended 7 days forecast**
 - **Celcius to Fahrenheit conversion and vice versa**
 
+## Todo Features
+
+[] **Search autocompletion**
+[] **Dark Mode**
+
 ## Getting Started
 
 An OpenWeatherMap API key is required, available [here](https://openweathermap.org/api).
