@@ -1,18 +1,26 @@
 <template>
   <div class="main">
-    <SearchBar @search="searchHandler($event)" />
-    <WeatherDisplay :weather="data" />
+    <h2>Vue Weather</h2>
+    <SearchBar class="component" @search="searchHandler($event)" />
+    <WeatherDisplay class="component" :weather="data" />
+    <WeatherForecast class="component" />
+    <p style="text-align: center; font-size: 13px">
+      Developed By
+      <a href="https://www.linkedin.com/in/miguelcarter/">Miguel Carter</a>
+    </p>
   </div>
 </template>
 
 <script>
 import SearchBar from "../components/SearchBar/SearchBar.vue";
 import WeatherDisplay from "../components/WeatherDisplay/WeatherDisplay.vue";
+import WeatherForecast from "../components/WeatherForecast/WeatherForecast.vue";
 export default {
   name: "MainView",
   components: {
     SearchBar,
     WeatherDisplay,
+    WeatherForecast,
   },
   data() {
     return {
@@ -41,7 +49,11 @@ export default {
 .main {
   width: 80%;
   max-width: 900px;
-  padding: 0;
   margin: 0 auto;
+  padding: 0;
+}
+
+.component {
+  margin-bottom: 10px;
 }
 </style>

@@ -31,10 +31,6 @@ export default {
 </script>
 
 <style scoped>
-.wrapper {
-  margin-bottom: 20px;
-}
-
 .wrapper > * {
   padding: 0;
   margin: 0;
