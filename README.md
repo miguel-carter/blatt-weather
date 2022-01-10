@@ -15,8 +15,8 @@ Weather App built with Vue.
 
 ## Todo Features
 
-[] **Search autocompletion**
-[] **Dark Mode**
+[ ] **Search autocompletion**
+[ ] **Dark Mode**
 
 ## Getting Started
 
