@@ -46,7 +46,7 @@ export default {
   methods: {
     async searchHandler(query) {
       const baseURL = "https://api.openweathermap.org/data/2.5/weather?q=";
-      const OW_API_KEY = process.env.API_KEY;
+      const OW_API_KEY = "018ae4396cd24e7003a1b9a92bad8508";
       try {
         const current = await axios.get(
           `${baseURL}${query}&appid=${OW_API_KEY}`
