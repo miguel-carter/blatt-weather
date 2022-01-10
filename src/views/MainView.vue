@@ -2,8 +2,17 @@
   <div class="main" v-if="data">
     <h2>Blatt Weather</h2>
     <SearchBar class="component" @search="searchHandler($event)" />
-    <WeatherDisplay class="component" :current="data" />
-    <WeatherForecast class="component" :forecast="data" />
+    <WeatherDisplay
+      class="component"
+      @toggle="onToggle"
+      :current="data"
+      :isToggled="isToggled"
+    />
+    <WeatherForecast
+      class="component"
+      :forecast="data"
+      :isToggled="isToggled"
+    />
     <p style="text-align: center; font-size: 13px">
       Developed In Vue By
       <a href="https://www.linkedin.com/in/miguelcarter/">Miguel Carter</a>
@@ -31,12 +40,13 @@ export default {
   data() {
     return {
       data: null,
+      isToggled: false,
     };
   },
   methods: {
     async searchHandler(query) {
       const baseURL = "https://api.openweathermap.org/data/2.5/weather?q=";
-      const OW_API_KEY = "018ae4396cd24e7003a1b9a92bad8508";
+      const OW_API_KEY = process.env.API_KEY;
       try {
         const current = await axios.get(
           `${baseURL}${query}&appid=${OW_API_KEY}`
@@ -48,6 +58,9 @@ export default {
       } catch (error) {
         console.error(error);
       }
+    },
+    onToggle() {
+      this.isToggled = !this.isToggled;
     },
   },
 };

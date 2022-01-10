@@ -1,18 +1,18 @@
 <template>
   <Card>
-    <div class="row">
+    <div class="row" style="padding-top: 20px">
       <div class="column">
         <span>Current Weather</span>
       </div>
       <div class="column">
         <SwitchToggle
           style="margin: 0 0 0 auto"
-          @input="onInputHandler"
+          @input="onInput"
           :value="isToggled"
         />
       </div>
     </div>
-    <div class="row">
+    <div class="row" style="padding-bottom: 20px">
       <div class="column">
         <WeatherGlance
           :conversionType="isToggled ? 'c' : 'f'"
@@ -48,16 +48,20 @@ export default {
       type: Object,
       required: true,
     },
+    isToggled: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
   },
   data() {
     return {
       title: "Current Weather",
-      isToggled: false,
     };
   },
   methods: {
-    onInputHandler() {
-      this.isToggled = !this.isToggled;
+    onInput() {
+      this.$emit("toggle");
     },
   },
 };

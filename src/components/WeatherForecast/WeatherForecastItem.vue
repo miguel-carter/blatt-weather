@@ -7,7 +7,11 @@
       :src="`http://openweathermap.org/img/w/${data.weather[0].icon}.png`"
       alt=""
     />
-    <p>{{ min }}&deg;/{{ max }}&deg;</p>
+    <p>
+      {{ min }}&deg;{{ conversionType.toUpperCase() }}/{{ max }}&deg;{{
+        conversionType.toUpperCase()
+      }}
+    </p>
   </div>
 </template>
 
@@ -20,29 +24,23 @@ export default {
       type: Object,
       required: true,
     },
+    conversionType: {
+      type: String,
+      required: true,
+      default: "f",
+    },
   },
   data() {
     return {
-      weekDays: [
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-      ],
+      weekDays: ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"],
     };
-  },
-  mounted() {
-    console.log(this.data);
   },
   computed: {
     min() {
-      return conversion("f", this.data.temp.min);
+      return conversion(this.conversionType, this.data.temp.min);
     },
     max() {
-      return conversion("f", this.data.temp.max);
+      return conversion(this.conversionType, this.data.temp.max);
     },
   },
 };

@@ -1,8 +1,17 @@
 <template>
   <Card>
-    <div class="row">
+    <div class="row" style="padding: 20px 10px 10px">
+      <div class="column">
+        <span>Extended Forecast</span>
+      </div>
+      <div class="column"></div>
+    </div>
+    <div class="row" style="padding-bottom: 20px">
       <div class="column" v-for="(item, index) in forecast.daily" :key="index">
-        <WeatherForecastItem :data="item" />
+        <WeatherForecastItem
+          :data="item"
+          :conversionType="isToggled ? 'c' : 'f'"
+        />
       </div>
     </div>
   </Card>
@@ -21,6 +30,11 @@ export default {
     forecast: {
       type: Object,
       required: true,
+    },
+    isToggled: {
+      type: Boolean,
+      required: true,
+      default: false,
     },
   },
 };

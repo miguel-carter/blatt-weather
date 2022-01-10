@@ -20,7 +20,6 @@ export default {
   font-family: Verdana, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
 }
 
 body,
@@ -38,6 +37,7 @@ body {
   flex-direction: column;
   justify-items: center;
   justify-content: center;
+  color: #878787;
   background-size: center 120%;
   background-repeat: auto no-repeat;
   background-image: url("~@/assets/clouds.svg"),
