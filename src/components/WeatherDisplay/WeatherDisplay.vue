@@ -43,12 +43,14 @@ export default {
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
+  margin: 0;
 }
 
 .column {
   display: flex;
   flex-direction: column;
   flex-basis: 100%;
+  margin: 0;
 }
 
 @media screen and (min-width: 800px) {

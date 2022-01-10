@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper" style="text-align: center">
     <p class="city">{{ data.city }}</p>
     <p class="temp">{{ data.temp }}</p>
     <p class="description">{{ data.description }}</p>

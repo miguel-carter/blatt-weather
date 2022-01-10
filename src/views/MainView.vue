@@ -1,14 +1,17 @@
 <template>
   <div class="main">
+    <SearchBar @search="searchHandler($event)" />
     <WeatherDisplay :weather="data" />
   </div>
 </template>
 
 <script>
+import SearchBar from "../components/SearchBar/SearchBar.vue";
 import WeatherDisplay from "../components/WeatherDisplay/WeatherDisplay.vue";
 export default {
   name: "MainView",
   components: {
+    SearchBar,
     WeatherDisplay,
   },
   data() {
@@ -26,6 +29,11 @@ export default {
       },
     };
   },
+  methods: {
+    searchHandler(query) {
+      console.log(query);
+    },
+  },
 };
 </script>
 
@@ -33,6 +41,7 @@ export default {
 .main {
   width: 80%;
   max-width: 900px;
+  padding: 0;
   margin: 0 auto;
 }
 </style>
