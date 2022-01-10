@@ -7,11 +7,7 @@
       :src="`http://openweathermap.org/img/w/${data.weather[0].icon}.png`"
       alt=""
     />
-    <p>
-      {{ min }}&deg;{{ conversionType.toUpperCase() }}/{{ max }}&deg;{{
-        conversionType.toUpperCase()
-      }}
-    </p>
+    <p>{{ min }}&deg;/{{ max }}&deg;</p>
   </div>
 </template>
 

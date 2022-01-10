@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper" style="text-align: center">
     <p class="city">Temp City</p>
-    <p class="temp">{{ temp }}&deg;{{ conversionType.toUpperCase() }}</p>
+    <p class="temp">{{ temp }}&deg;</p>
     <p class="description">
       {{ data.current.weather[0].description }}
     </p>

@@ -1,8 +1,6 @@
 <template>
   <div class="wrapper" style="text-align: left">
-    <p class="description">
-      Feels like {{ feels_like }}&deg;{{ conversionType.toUpperCase() }}
-    </p>
+    <p class="description">Feels like {{ feels_like }}&deg;</p>
     <div>
       <div style="display: inline-block">
         <p class="detail"><i class="fas fa-tint"></i> humidity</p>
