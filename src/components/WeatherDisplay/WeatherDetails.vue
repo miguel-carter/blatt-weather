@@ -43,7 +43,7 @@ export default {
 .wrapper > * {
   padding: 0;
   margin: 0;
-  width: 60%;
+  width: 70%;
   margin: 0 auto;
 }
 

@@ -15,8 +15,9 @@ Weather App built with Vue.
 
 ## Todo Features
 
-- [ ] **Search Autocompletion**
+- [ ] **Search Autocompletion w/ GeoCode Earth**
 - [ ] **Dark Mode**
+- [ ] **Clean API call, it's UGLY**
 
 ## Getting Started
 

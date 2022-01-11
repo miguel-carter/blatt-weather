@@ -1,6 +1,6 @@
 <template>
   <div class="main" v-if="data">
-    <h2>Blatt Weather</h2>
+    <h2>{{ title }}</h2>
     <SearchBar class="component" @search="searchHandler($event)" />
     <WeatherDisplay
       class="component"
@@ -40,6 +40,7 @@ export default {
   data() {
     return {
       data: null,
+      title: "Blatt Weather",
       isToggled: false,
     };
   },
@@ -70,6 +71,7 @@ export default {
 .main {
   width: 80%;
   max-width: 900px;
+  max-height: 90vh;
   margin: 0 auto;
   padding: 0;
 }
