@@ -16,8 +16,9 @@ Weather App built with Vue.
 ## Todo Features
 
 - [x] **Search Autocompletion w/ Geoapify**
-- [ ] **Dark Mode**
 - [x] **Clean API call, it's UGLY**
+- [ ] **Dark Mode**
+- [ ] **Figure out env vars in Netlify**
 
 ## Getting Started
 

@@ -15,6 +15,7 @@
         :isToggled="isToggled"
       />
     </div>
+
     <p style="text-align: center; font-size: 13px">
       Developed In Vue By
       <a href="https://www.linkedin.com/in/miguelcarter/">Miguel Carter</a>
@@ -46,9 +47,10 @@ export default {
   methods: {
     async searchHandler(query) {
       const { name, location } = query;
+      const OW_API_KEY = "018ae4396cd24e7003a1b9a92bad8508";
       try {
         const forecast = await axios.get(
-          `https://api.openweathermap.org/data/2.5/onecall?lat=${location.lat}&lon=${location.lon}&appid=${process.env.OW_API_KEY}`
+          `https://api.openweathermap.org/data/2.5/onecall?lat=${location.lat}&lon=${location.lon}&appid=${OW_API_KEY}`
         );
         this.data = forecast.data;
         this.data.name = name;
