@@ -1,18 +1,20 @@
 <template>
-  <div class="main" v-if="data">
+  <div class="main">
     <h2>{{ title }}</h2>
     <SearchBar class="component" @search="searchHandler($event)" />
-    <WeatherDisplay
-      class="component"
-      @toggle="onToggle"
-      :current="data"
-      :isToggled="isToggled"
-    />
-    <WeatherForecast
-      class="component"
-      :forecast="data"
-      :isToggled="isToggled"
-    />
+    <div v-if="data">
+      <WeatherDisplay
+        class="component"
+        @toggle="onToggle"
+        :current="data"
+        :isToggled="isToggled"
+      />
+      <WeatherForecast
+        class="component"
+        :forecast="data"
+        :isToggled="isToggled"
+      />
+    </div>
     <p style="text-align: center; font-size: 13px">
       Developed In Vue By
       <a href="https://www.linkedin.com/in/miguelcarter/">Miguel Carter</a>
@@ -34,9 +36,6 @@ export default {
     WeatherDisplay,
     WeatherForecast,
   },
-  mounted() {
-    this.searchHandler("New York");
-  },
   data() {
     return {
       data: null,
@@ -46,16 +45,13 @@ export default {
   },
   methods: {
     async searchHandler(query) {
-      const baseURL = "https://api.openweathermap.org/data/2.5/weather?q=";
-      const OW_API_KEY = "018ae4396cd24e7003a1b9a92bad8508";
+      const { name, location } = query;
       try {
-        const current = await axios.get(
-          `${baseURL}${query}&appid=${OW_API_KEY}`
-        );
         const forecast = await axios.get(
-          `https://api.openweathermap.org/data/2.5/onecall?lat=${current.data.coord.lat}&lon=${current.data.coord.lon}&appid=${OW_API_KEY}`
+          `https://api.openweathermap.org/data/2.5/onecall?lat=${location.lat}&lon=${location.lon}&appid=${process.env.OW_API_KEY}`
         );
         this.data = forecast.data;
+        this.data.name = name;
       } catch (error) {
         console.error(error);
       }

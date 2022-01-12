@@ -15,9 +15,9 @@ Weather App built with Vue.
 
 ## Todo Features
 
-- [ ] **Search Autocompletion w/ GeoCode Earth**
+- [x] **Search Autocompletion w/ Geoapify**
 - [ ] **Dark Mode**
-- [ ] **Clean API call, it's UGLY**
+- [x] **Clean API call, it's UGLY**
 
 ## Getting Started
 
@@ -43,5 +43,6 @@ npm run serve
 ## Credits
 
 [OpenWeatherMap](https://openweathermap.org/ "OpenWeatherMap") (Weather data API)
+[Geoapify](https://www.geoapify.com/ "Geoapify") (Location Autocomplete)
 
 [fontawesome](https://fontawesome.com/ "fontawesome") (All icons)
